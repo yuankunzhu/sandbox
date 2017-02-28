@@ -46,3 +46,40 @@ Final process status is success
 Here we use the arguments field to add an additional argument to the command line that isn't tied to a specific input parameter.
 
 arguments: ["-d", $(runtime.outdir)]
+
+
+## samtools index
+```
+$ cwl-runner samtools-index.cwl samtools-index.yml
+/usr/local/bin/cwl-runner 1.0.20170224141733
+Resolved 'samtools-index.cwl' to 'file:///Users/zhuy/Documents/chopwork/github/sandbox/cwl/v1.0/1.user-guide/7.arguments/samtools-index.cwl'
+[job samtools-index.cwl] /var/folders/z8/pqc4mk8x1nzd8cy74zrlv67dx2txhk/T/tmpA286CU$ docker \
+    run \
+    -i \
+    --volume=/Users/zhuy/Documents/chopwork/github/sandbox/cwl/v1.0/1.user-guide/7.arguments/input.bam:/private/var/lib/cwl/stgb66e81c2-2651-419d-9361-059b7d728db6/input.bam:ro \
+    --volume=/private/var/folders/z8/pqc4mk8x1nzd8cy74zrlv67dx2txhk/T/tmpA286CU:/private/var/spool/cwl:rw \
+    --volume=/private/var/folders/z8/pqc4mk8x1nzd8cy74zrlv67dx2txhk/T/tmpNk64Rz:/tmp:rw \
+    --workdir=/private/var/spool/cwl \
+    --read-only=true \
+    --user=2049799698 \
+    --rm \
+    --env=TMPDIR=/tmp \
+    --env=HOME=/private/var/spool/cwl \
+    comics/samtools \
+    samtools \
+    index \
+    /private/var/lib/cwl/stgb66e81c2-2651-419d-9361-059b7d728db6/input.bam \
+    /private/var/spool/cwl/input.bam.bai
+[job samtools-index.cwl] completed success
+{
+    "bai": {
+        "checksum": "sha1$479c5a1f71d2d92af093c1ea6af9e7c0519b1b80",
+        "basename": "input.bam.bai",
+        "location": "file:///Users/zhuy/Documents/chopwork/github/sandbox/cwl/v1.0/1.user-guide/7.arguments/input.bam.bai",
+        "path": "/Users/zhuy/Documents/chopwork/github/sandbox/cwl/v1.0/1.user-guide/7.arguments/input.bam.bai",
+        "class": "File",
+        "size": 12496
+    }
+}
+Final process status is success
+```
