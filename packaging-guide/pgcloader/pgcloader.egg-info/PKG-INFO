@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: pgcloader
+Version: 1.0.0a1
+Summary: A sample Python API wrapper for load data from S3 to Cavatica
+Home-page: https://github.com/d3b-center/s3-sbg-loader
+Author: Yuankun Zhu
+Author-email: zhuyuank@gmail.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7

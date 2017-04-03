@@ -1,0 +1,10 @@
+LICENSE.txt
+MANIFEST.in
+setup.py
+pgcloader/__init__.py
+pgcloader/pgcloader.py
+pgcloader.egg-info/PKG-INFO
+pgcloader.egg-info/SOURCES.txt
+pgcloader.egg-info/dependency_links.txt
+pgcloader.egg-info/requires.txt
+pgcloader.egg-info/top_level.txt
