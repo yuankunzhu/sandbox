@@ -1,0 +1,51 @@
+{
+    "id": "users-zhuy-documents-chopwork-git-sandbox-cottontail-hello-world-json",
+    "class": "CommandLineTool",
+    "label": "hello-world",
+    "description": "",
+    "requirements": [],
+    "inputs": [
+        {
+            "type": [
+                "null",
+                "string"
+            ],
+            "id": "#input_bam"
+        }
+    ],
+    "outputs": [],
+    "hints": [
+        {
+            "class": "sbg:CPURequirement",
+            "value": 1
+        },
+        {
+            "class": "sbg:MemRequirement",
+            "value": 1000
+        },
+        {
+            "class": "DockerRequirement",
+            "dockerImageId": "",
+            "dockerPull": "docker pull comics/samtools"
+        }
+    ],
+    "baseCommand": [
+        "samtools",
+        "view"
+    ],
+    "stdin": "",
+    "stdout": "",
+    "successCodes": [],
+    "temporaryFailCodes": [],
+    "arguments": [],
+    "ct:path": "/Users/zhuy/Documents/chopwork/git/sandbox/cottontail/hello-world.json",
+    "sbg:job": {
+        "inputs": {
+            "input_bam": "input_bam-string-value"
+        },
+        "allocatedResources": {
+            "cpu": 0,
+            "mem": 0
+        }
+    }
+}
