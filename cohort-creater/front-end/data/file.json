@@ -1,0 +1,5 @@
+[
+	{"name": "file_A", "id": "xxxxxxxx", "type":"RNA-Seq", "metadata": true},
+	{"name": "file_A", "id": "xxxxxxxx", "type":"RNA-Seq", "metadata": true},
+	{"name": "file_A", "id": "xxxxxxxx", "type":"RNA-Seq", "metadata": false}
+]

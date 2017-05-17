@@ -1,0 +1,5 @@
+[
+	{"name": "project_A", "id": "yuankun/project-a", "exe": true},
+	{"name": "project_B", "id": "yuankun/project-b", "exe": true},
+	{"name": "project_C", "id": "yuankun/project-c", "exe": false}
+]

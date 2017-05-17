@@ -1,0 +1,13 @@
+{
+	"sbg_token": "",
+	"cohort_name": "cohort-creator",
+	"project_id": "yuankun/helloworld",
+	"seqtype": "RNA-Seq",
+	"pipeline_id": "cavatica/institutional-pipelines/star-rsem-pipeline-chop",
+	"files": [
+		"7316-238_1.fq.gz",
+		"7316-238_2.fq.gz",
+		"7316-1884_1_1.fq.gz",
+		"7316-1884_1_2.fq.gz"
+	]
+}

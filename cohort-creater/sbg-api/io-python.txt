@@ -1,0 +1,41 @@
+python get_project_list.py -i input.json -o output.json
+	- input.json:
+		{"sbg_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+	- output.json:
+		[
+			{"name": "project_A", "id": "yuankun/project-a", "exe_permission": True},
+			{"name": "project_B", "id": "yuankun/project-b", "exe_permission": True},
+			{"name": "project_C", "id": "yuankun/project-c", "exe_permission": Flase}
+		]
+
+
+python get_file_list.py -i input.json -o output.json
+	- input.json:
+		{
+			"sbg_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			"project_id":"yuankun/project-a"
+		}
+	- output.json:
+		[
+			{"name": "file_A", "id": "xxxxxxxx", "datatype": "RNA-Seq", "metadata": True},
+			{"name": "file_A", "id": "xxxxxxxx", "datatype": "RNA-Seq", "metadata": True},
+			{"name": "file_A", "id": "xxxxxxxx", "datatype": "RNA-Seq", "metadata": Flase}
+		]
+
+
+python batch_run_to_staging.py -i input.json
+	- input.json:
+		{
+			"sbg_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			"cohort_name": "My_cBio_Cohort",
+			"project_id": "yuankun/project-a",
+			"pipeline_id": "somatic-wgs-pipeline",
+			"files": [
+				{"id":"xxxxxxxx"},
+				{"id":"xxxxxxxx"},
+				{"id":"xxxxxxxx"}
+			]
+		}
+	- once internal status check finished, send a API call out
+	- output.json:
+		{"tarball_id": "xxxxxxxx"}

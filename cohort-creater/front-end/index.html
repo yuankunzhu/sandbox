@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cohort Creator</title>
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://use.fontawesome.com/8492f1d4d0.js"></script>
+    <script src="cohort-creator.js"></script>
+
+    <!-- CSS -->
+    <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="build.css">
+  </head>
+
+  <body onload="getUserInfo()">
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header p-b-0">
+            <i class="fa fa-user" aria-hidden="true"> User </i>
+          </div>
+          <div class="card-block" style="text-align: center">
+            <h4 class="card-title">
+              <p id="user_name"></p>
+            </h4>
+            <h6 class="card-subtitle text-muted">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i> <p id="user_email"></p>
+              <br>
+              <i class="fa fa-building-o" aria-hidden="true"></i> <p id="user_affiliation"></p>
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header p-b-0">
+            <i class="fa fa-cogs" aria-hidden="true"> DEBUG: JSON print, delete this section for stable version</i>
+          </div>
+          <p id="debug"></p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class = "btn-group">
+          <button type="button" class="btn btn-primary btn-sm" id="projectBtn">
+            Project List
+          </button>
+        </div>
+        <div class = "btn-group">
+          <button class="btn btn-success dropdown-toggle btn-sm" type="button" id="dropBtn" data-toggle="dropdown" disabled>
+            Pipeline
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item btn-sm" type="button" id="wgs">WGS</button>
+            <button class="dropdown-item btn-sm" type="button" id="wes">WES</button>
+            <button class="dropdown-item btn-sm" type="button" id="rna">RNA-Seq</button>
+          </div>
+        </div>
+        <div class = "btn-group">
+          <input type="text" class="form-control input-sm" placeholder="Input Your Cohort Name" name="cName" id="cohortName" disabled>
+        </div>
+        <div class = "btn-group">
+          <button type="button" class="btn btn-danger btn-sm" disabled id="runBtn">
+            Cohort Run!
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+      <br>
+        <div class="card">
+          <div class="card-header p-b-0">
+            <i class="fa fa-folder" aria-hidden="true"> Projects</i>
+          </div>
+          <table id="projects" class="table table-striped table-bordered compact" width="100%"></table>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <br>
+        <div class="card">
+          <div class="card-header p-b-0">
+            <i class="fa fa-files-o" aria-hidden="true" id="card-file"> Files</i>
+          </div>
+          <table id="files" class="table table-striped table-bordered compact " width="100%"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

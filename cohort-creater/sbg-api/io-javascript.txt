@@ -1,0 +1,56 @@
+- input-'#display_user_info':
+	{
+		"name": "Yuaknun Zhu",
+		"affiliation": "CHOP"
+	}
+
+- output-'#get_project_info':
+	{"sbg_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+
+- input-'#display_project_list': 
+	**output from get_project_list.py**
+	[
+		{"name": "project_A", "id": "yuankun/project-a", "exe_permission": True},
+		{"name": "project_B", "id": "yuankun/project-b", "exe_permission": True},
+		{"name": "project_C", "id": "yuankun/project-c", "exe_permission": Flase}
+	]
+
+- output-'#get_project_id':
+	{
+		"project_id":"yuankun/project-a"
+	}
+
+- input-'#display_file_list':
+	**output from get_file_list.py**
+	[
+		{"name": "file_A", "id": "xxxxxxxx", "metadata": True},
+		{"name": "file_A", "id": "xxxxxxxx", "metadata": True},
+		{"name": "file_A", "id": "xxxxxxxx", "metadata": Flase}
+	]
+
+- output-'#get_file_list':
+	[
+		{"id":"xxxxxxxx"},
+		{"id":"xxxxxxxx"},
+		{"id":"xxxxxxxx"}
+	]
+
+- output-'#get_pipeline_id':
+	{"pipeline_id": "somatic-wgs-pipeline"}
+
+- output-'#get_cohort_name':
+	{"cohort_name": "My_cBio_Cohort"}
+
+- output-'#run_task':
+	**input for batch_run_to_staging.py**
+	{
+		"sbg_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+		"cohort_name": "My_cBio_Cohort",
+		"project_id": "yuankun/project-a",
+		"pipeline_id": "somatic-wgs-pipeline",
+		"files": [
+			{"id":"xxxxxxxx"},
+			{"id":"xxxxxxxx"},
+			{"id":"xxxxxxxx"}
+		]
+	}

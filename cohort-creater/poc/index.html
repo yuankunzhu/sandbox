@@ -1,0 +1,156 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>
+			// ===========================================================================
+			$( document ).ready(function() {
+				console.log('ok');
+				switchTab('start');
+				
+				// should not be visible until set
+				$( "#name" ).html("ERROR");
+				$( "#result" ).html("ERROR");
+			});
+		
+			// ---------------------------------------------------------------------------
+			var divs = [
+					"start",
+					"registrations",
+					"signin",
+					"cohort",
+					"end"
+				];
+		
+			// ---------------------------------------------------------------------------
+			function switchTab(targetTab) {
+				console.log("switch: " + targetTab);
+				$( "#" + targetTab ).css( "display", "block" );
+				
+				for (i in divs) {
+					var tab = divs[i]
+					if (tab != targetTab) {
+						$( "#" + tab ).css( "display", "none" ); } }
+			}
+			
+			// ===========================================================================
+			function register() {
+				console.log("register");
+
+				$.ajax({ 
+					type: "PUT",
+					dataType: "json",
+					url: "<cavauth_registration_url>",
+				 	contentType: "application/json; charset=utf-8",
+					data: '{ "email": "john@smith.com", "sbg_token": "98765", "name": "John Smith", "institution": "CHOP" }',
+					success: function(data){
+						console.log("register: ok");
+						switchTab("signin");
+					},
+					error: function(data){
+						console.log("register: error");
+						alert("register: error");
+					}
+				});
+
+			}
+
+			// ---------------------------------------------------------------------------
+			function signin() {
+				console.log("signin");
+
+				$.ajax({ 
+					type: "POST",
+					dataType: "json",					
+					url: "<idp_allow_url>",
+					data: "id_token=valid",
+					success: function(data){
+						console.log("signin1: ok");
+						
+						$.ajax({
+							type: "GET",
+							dataType: "json",
+							url: "<cavauth_tokeninfo_url>",
+						 	contentType: "application/json; charset=utf-8",
+							headers: { "Authorization": "Bearer 12345" },
+							success: function(data){
+								console.log("signin2: ok");
+								
+								$( "#name" ).html(data["email"]);
+								switchTab("cohort");
+							},
+							error: function(data){
+								console.log("signin2: error");
+								alert("signin2: error");
+							}
+						});						
+					},
+					error: function(data){
+						console.log("signin1: error"); // TODO: jsonify error
+						alert("signin1: error");
+					}
+				});
+
+			}
+			
+			// ---------------------------------------------------------------------------
+			function cohort() {
+				console.log("cohort");
+
+				$.ajax({ 
+					type: "POST",
+					dataType: "json",
+					url: "<cohortsome_creation_url>/" + $('#cohortname').val(),
+				 	contentType: "application/json; charset=utf-8",
+					headers: { "Authorization": "Bearer 12345" },
+					data: '{ "samples": ["project1.spl11", "project1.spl12", "project2.spl2"], "pipeline": "wgs" }',
+					success: function(data){
+						console.log("cohort: ok");
+						
+						$( "#result" ).html(data["cohort"]);
+						switchTab("end");
+					},
+					error: function(data){
+						console.log("cohort: error");
+						alert("cohort: error");
+					}
+				});
+
+			}
+
+			// ---------------------------------------------------------------------------
+
+		</script>
+	</head>
+	<body>
+			
+		<div id="start">
+			start<br/>
+			disclaimer: flow description, having to sign up to sbg, having to allow google signin, ... (screenshots and all)<br/>
+			<a href="javascript:void(0)" onclick="switchTab('registrations')">ok</a><br/>
+		</div>
+
+		<div id="registrations">
+			registrations<br/>
+			<a href="<sbg_registration_url>" target="_blank">sbg sign-up</a><br/>
+			<input type="text" name="firstname" placeholder="John Smith">
+			<a href="javascript:void(0)" onclick="register()">pedcbio sign-up</a><br/>
+		</div>
+
+		<div id="signin">
+			<a href="javascript:void(0)" onclick="signin()">google allow+sign-in</a><br/>
+		</div>
+		
+		<div id="cohort">
+			cohort</br>
+			Welcome <span id="name"></span>!<br/>
+			<input type="text" id="cohortname" value="my-cohort">
+			<a href="javascript:void(0)" onclick="cohort()">create cohort</a><br/>
+		</div>
+
+		<div id="end">
+			end</br>
+			cohort: <span id="result"/><br/>
+		</div>
+
+	</body>
+</html>
