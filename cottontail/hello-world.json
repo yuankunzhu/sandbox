@@ -26,7 +26,7 @@
         {
             "class": "DockerRequirement",
             "dockerImageId": "",
-            "dockerPull": "docker pull comics/samtools"
+            "dockerPull": "comics/samtools"
         }
     ],
     "baseCommand": [
