@@ -98,3 +98,6 @@ ENV/
 
 # mkdocs documentation
 /site
+
+config.yaml
+config.ini
