@@ -43,3 +43,48 @@ p4 + scale_x_discrete(name="State Abbreviation") +
                          breaks = c(1976, 1994, 2013),
                          labels = c("'76", "'94", "'13"),
                          low = "blue", high = "red")
+
+
+p5 <- ggplot(housing, aes(x = Date, y = Home.Value))
+p5 + geom_line(aes(color = State))
+p5 + geom_line(aes(color = State)) + facet_wrap(~State, ncol=10)
+p5 + geom_line() + facet_grid(~State)
+
+
+p5 + geom_line() + facet_wrap(~State, ncol=10) + theme_linedraw()
+p5 + geom_line() + facet_wrap(~State, ncol=10) + theme_bw()
+p5 + geom_line() + facet_wrap(~State, ncol=10) + theme_light()
+p5 + geom_line() + facet_wrap(~State, ncol=10) + theme_classic()
+p5 + geom_line() + facet_wrap(~State, ncol=10) + theme_minimal()
+
+
+p <- ggplot(t2, aes(x = BGI, y = HTG))  + 
+  geom_point(alpha=0.5) + 
+  geom_abline(intercept = 0, slope = 1, color = 2) +
+  geom_smooth(fullrange = T) + 
+  facet_wrap(~Sample, ncol=2)
+cors <- ddply(t2, .(grp1, grp2), summarise, cor = round(cor(BGI, HTG), 2))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
