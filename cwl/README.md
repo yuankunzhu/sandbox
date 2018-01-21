@@ -13,3 +13,4 @@
   - cloud
   - HPC
 
+[gmkf-alignment-workflow](https://view.commonwl.org/workflows/github.com/kids-first/kf-alignment-workflow/blob/master/workflows/kfdrc_alignment_pipeline.cwl)
