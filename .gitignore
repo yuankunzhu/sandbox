@@ -1,4 +1,5 @@
 .*
+!.github/
 test/
 !.gitignore
 # Byte-compiled / optimized / DLL files
