@@ -2,8 +2,6 @@
 name: Dev team bug fix request ticket
 about: Use this issue template to create a bug fix request for existing Kids First and D3b tools and workflows
 title: 'Dev bug fix:'
-labels: 'dev','bug'
-assignees: '@migbro','@bixdev'
 
 ---
 
